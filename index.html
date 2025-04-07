@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PepeErika: The Swamp Meme Coin</title>
+  <!-- Social Media Meta Tags -->
+  <meta property="og:title" content="PepeErika: The Swamp Meme Coin">
+  <meta property="og:description" content="Join the swamp revolution! 🐸🎶 $PPRIKA is the official currency of Pepe's Germano-Frog Empire. Deployed on Solana. Swamp vibes only.">
+  <meta property="og:image" content="images/pepeerika-logo.jpg">
+  <meta property="og:url" content="https://pepeerika.xyz">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PepeErika: The Swamp Meme Coin">
+  <meta name="twitter:description" content="Join the swamp revolution! 🐸🎶 $PPRIKA is the official currency of Pepe's Germano-Frog Empire. Deployed on Solana. Swamp vibes only.">
+  <meta name="twitter:image" content="https://pepeerika.xyz/pepeerika-logo.jpg">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='50' font-size='50' fill='%23000' text-anchor='middle' x='50' dy='.3em'%3E🐸%3C/text%3E%3C/svg%3E">
+  <!-- Styles -->
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: bold;
+      margin: 0;
+      letter-spacing: 1.5px;
+    }
+
+    a {
+      color: #00ff88;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Music Toggle Button */
+    #music-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+      transition: background 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    #music-toggle:hover {
+      background: rgba(0, 0, 0, 1);
+      transform: scale(1.1);
+    }
+
+    #music-toggle i {
+      font-size: 1.5rem;
+    }
+
+    /* Header Section */
+    #header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #header video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    #header .logo {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: float 3s ease-in-out infinite, fadeIn 1s ease-in forwards;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    #header h1 {
+      font-size: 4.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    #header p {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      font-style: italic;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    #header .cta-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #header .cta-buttons a {
+      background: linear-gradient(135deg, #00ff88, #00cc66);
+      color: #1a1a1a;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+    }
+
+    #header .cta-buttons a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5);
+    }
+
+    /* Infinite Scrolling Gallery */
+    #gallery {
+      padding: 80px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    #gallery .image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    #gallery .image-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #gallery .image-container img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    #gallery .image-container .button-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #gallery .image-container:hover .button-container {
+      opacity: 1;
+    }
+
+    #gallery .image-container .button-container button {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #gallery .image-container .button-container button:hover {
+      background: rgba(0, 0, 0, 1);
+    }
+
+    /* Footer Section */
+    footer {
+      background: #000;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer .social-icons {
+      margin-bottom: 10px;
+    }
+
+    footer .social-icons a {
+      margin: 0 10px;
+      font-size: 1.2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      #header h1 {
+        font-size: 3rem;
+      }
+
+      #header p {
+        font-size: 1.2rem;
+      }
+
+      #header .cta-buttons a {
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="css/all.min.css">
+</head>
+<body>
+  <!-- Music Toggle Button -->
+  <button id="music-toggle">
+    <i class="fas fa-music"></i>
+  </button>
+
+  <!-- Header Section -->
+  <section id="header">
+    <video autoplay="" muted="" loop="" id="header-video">
+      <source src="media/pepeerika-background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <img src="images/pepeerika-logo.png" alt="PepeErika Logo" class="logo">
+    <h1>The Swamp Meme Coin</h1>
+    <p>"Join the swamp! 🐸🎶 $PPRIKA is the official currency of Pepe's Germano-Frog Empire. Deployed on Solana. Swamp vibes only."</p>
+    <div class="cta-buttons">
+      <a href="https://t.me/PepeErikaCoin" target="_blank">The Swamp Squad</a>
+      <a href="https://pump.fun/coin/E3HYywDRyQfeLWZssnWqifqktivoXPD5T9jjWF7pump" target="_blank">Buy $PPRIKA</a>
+    </div>
+  </section>
+
+  <!-- Infinite Scrolling Gallery -->
+  <section id="gallery">
+    <!-- Images will be dynamically loaded here -->
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://x.com/PepeErikaCoin" target="_blank">Twitter</a>
+      <a href="https://t.me/PepeErikaCoin" target="_blank">Telegram</a>
+      <a href="https://discord.gg/pepeerika" target="_blank">Discord</a>
+    </div>
+    <p>"Marching since 2024. Just like your grandpa’s accordion. PepeErika🐸©"</p>
+  </footer>
+
+  <!-- Background Music -->
+  <audio id="background-music" loop="">
+    <source src="media/erika-remix.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // List of images (use absolute URLs or relative paths)
+    const images = [
+      'pepeerika1.jpg',
+      'pepeerika2.jpg',
+      'pepeerika3.jpg',
+      'pepeerika4.jpg',
+      'pepeerika5.jpg',
+      'pepeerika6.jpg',
+      'pepeerika7.jpg',
+      'pepeerika8.jpg',
+      'pepeerika9.jpg',
+      'pepeerika10.jpg',
+    ];
+
+    // Infinite Scrolling Gallery Script
+    const gallery = document.getElementById('gallery');
+    let index = 0;
+
+    function loadImages() {
+      for (let i = 0; i < 6; i++) { // Load 6 images at a time
+        if (index >= images.length) return;
+
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+
+        const img = document.createElement('img');
+        img.src = images[index];
+        img.alt = `PepeErika Image ${index + 1}`;
+
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('button-container');
+
+        const shareButton = document.createElement('button');
+        shareButton.textContent = 'Share';
+        shareButton.dataset.imageUrl = images[index];
+
+        const downloadButton = document.createElement('button');
+        downloadButton.textContent = 'Download';
+        downloadButton.dataset.imageUrl = images[index];
+
+        const viewButton = document.createElement('button');
+        viewButton.textContent = 'View';
+        viewButton.dataset.imageUrl = images[index];
+
+        buttonContainer.appendChild(shareButton);
+        buttonContainer.appendChild(downloadButton);
+        buttonContainer.appendChild(viewButton);
+        imageContainer.appendChild(img);
+        imageContainer.appendChild(buttonContainer);
+        gallery.appendChild(imageContainer);
+
+        index++;
+      }
+
+      // Trigger fade-in animation for newly loaded images
+      setTimeout(() => {
+        const containers = document.querySelectorAll('#gallery .image-container');
+        containers.forEach(container => {
+          if (container.getBoundingClientRect().top < window.innerHeight) {
+            container.classList.add('visible');
+          }
+        });
+      }, 100);
+    }
+
+    // Event delegation for buttons
+    gallery.addEventListener('click', (event) => {
+      if (event.target.tagName === 'BUTTON') {
+        const imageUrl = event.target.dataset.imageUrl;
+        if (event.target.textContent === 'Share') {
+          shareImage(imageUrl);
+        } else if (event.target.textContent === 'Download') {
+          downloadImage(imageUrl);
+        } else if (event.target.textContent === 'View') {
+          viewImage(imageUrl);
+        }
+      }
+    });
+
+    // Share Website Link Function
+    function shareImage(imageUrl) {
+      const message = `PepeErika: The Swamp Meme Coin - "Join the swamp revolution! 🐸🎶 $PEPERIKA is the official currency of Pepe's Germano-Frog Empire. Deployed on Solana. Swamp vibes only."`;
+      const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(window.location.href)}`;
+      window.open(shareUrl, '_blank');
+    }
+
+    // Download Image Function
+    function downloadImage(imageUrl) {
+      const link = document.createElement('a');
+      link.href = imageUrl;
+      link.download = `pepeerika-meme-${Date.now()}.jpg`; // Set a unique filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // View Image Function
+    function viewImage(imageUrl) {
+      const img = document.createElement('img');
+      img.src = imageUrl;
+      img.style.maxWidth = '100%';
+      img.style.maxHeight = '100vh';
+      img.style.position = 'fixed';
+      img.style.top = '50%';
+      img.style.left = '50%';
+      img.style.transform = 'translate(-50%, -50%)';
+      img.style.zIndex = '1000';
+      img.style.cursor = 'pointer';
+      img.onclick = () => document.body.removeChild(img);
+      document.body.appendChild(img);
+    }
+
+    // Music Toggle Functionality
+    const musicToggle = document.getElementById('music-toggle');
+    const backgroundMusic = document.getElementById('background-music');
+    let isPlaying = false;
+
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        backgroundMusic.pause();
+        musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+      } else {
+        backgroundMusic.play();
+        musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Load initial set of images
+    loadImages();
+
+    // Infinite Scroll Event Listener
+    window.addEventListener('scroll', () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+        loadImages();
+      }
+    });
+
+    // Fade-in images on scroll
+    window.addEventListener('scroll', () => {
+      const containers = document.querySelectorAll('#gallery .image-container');
+      containers.forEach(container => {
+        if (container.getBoundingClientRect().top < window.innerHeight) {
+          container.classList.add('visible');
+        }
+      });
+    });
+  </script>
+
+
+</body></html>
